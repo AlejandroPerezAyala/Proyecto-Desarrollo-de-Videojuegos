@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Cannon : MonoBehaviour
 {
     public GameObject PrefabBullet;
-    public int DelayTime;
-    public int SpawnTime;
+    public float DelayTime;
+    public float SpawnTime;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("PrefabCreate", DelayTime, SpawnTime);
+        Shoot();
     }
 
     // Update is called once per frame
@@ -22,6 +24,15 @@ public class Cannon : MonoBehaviour
 
     void PrefabCreate()
     {
-        Instantiate(PrefabBullet, transform);
+        Instantiate(PrefabBullet, transform.position, transform.rotation);
     }
+
+    void Shoot()
+    {
+        InvokeRepeating("PrefabCreate", DelayTime, SpawnTime);
+    }
+
+   
+   
+
 }

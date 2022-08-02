@@ -10,11 +10,11 @@ public class Player : MonoBehaviour
     public float Scale;
     int hp = 100;
     public int Attack;
-    public Vector3 Movement;
+    //public Vector3 Movement;
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = Vector3.up * PosY + Vector3.right * PosX;
+        //transform.position = Vector3.up * PosY + Vector3.right * PosX;
         transform.localScale = transform.localScale * Scale;
         Damage(Attack);
 
@@ -23,9 +23,27 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Direction(Movement);
+        if (Input.GetKey(KeyCode.W))
+        {
+            Direction(Vector3.forward);
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            Direction(Vector3.back);
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            Direction(Vector3.left);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            Direction(Vector3.right);
+        }
+
         Health();
-        Debug.Log(hp);
     }
 
     void Damage(int Attack)
@@ -40,7 +58,7 @@ public class Player : MonoBehaviour
 
     void Direction(Vector3 Movement)
     {
-        transform.position = transform.position + Movement* Time.deltaTime * Velocidad;
+        transform.Translate(Movement* Time.deltaTime * Velocidad);
     }
 
 }
