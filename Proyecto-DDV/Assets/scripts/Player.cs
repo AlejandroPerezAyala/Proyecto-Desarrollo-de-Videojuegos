@@ -23,6 +23,28 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        PlayerMovement();
+        Health();
+    }
+
+    void Damage(int Attack)
+    {
+        hp -= Attack;
+    }
+
+    void Health()
+    {
+        hp += 2;
+    }
+
+    void Direction(Vector3 Movement)
+    {
+        transform.Translate(Movement* Time.deltaTime * Velocidad);
+    }
+
+    void PlayerMovement()
+    {
         if (Input.GetKey(KeyCode.W))
         {
             Direction(Vector3.forward);
@@ -42,23 +64,6 @@ public class Player : MonoBehaviour
         {
             Direction(Vector3.right);
         }
-
-        Health();
-    }
-
-    void Damage(int Attack)
-    {
-        hp -= Attack;
-    }
-
-    void Health()
-    {
-        hp += 2;
-    }
-
-    void Direction(Vector3 Movement)
-    {
-        transform.Translate(Movement* Time.deltaTime * Velocidad);
     }
 
 }
