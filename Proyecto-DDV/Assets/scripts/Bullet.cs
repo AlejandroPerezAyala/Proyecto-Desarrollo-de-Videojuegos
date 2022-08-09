@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
 
-        Invoke("DestroyBullet", LiveTime);
+        DestroyBullet();
     }
 
     // Update is called once per frame
@@ -34,6 +34,6 @@ public class Bullet : MonoBehaviour
 
     void DestroyBullet()
     {
-        Destroy(gameObject);
+        Destroy(gameObject,LiveTime);
     }
 }
