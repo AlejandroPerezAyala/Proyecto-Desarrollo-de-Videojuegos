@@ -32,6 +32,7 @@ public class PlayerCollision : MonoBehaviour
             {
                 Touch = false;
                 collision.transform.position = Teleporters[0].position;
+                collision.transform.rotation = Teleporters[0].rotation;
             }
             
         } else if (TimeTouchWall >= Cooldown && Touch == false)
@@ -40,6 +41,7 @@ public class PlayerCollision : MonoBehaviour
             {
                 Touch = true;
                 collision.transform.position = Teleporters[1].position;
+                collision.transform.rotation = Teleporters[1].rotation;
             }
         }
     }
